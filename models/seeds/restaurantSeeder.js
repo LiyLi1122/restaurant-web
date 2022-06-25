@@ -1,4 +1,5 @@
 //data
+const mongoose = require('mongoose')
 const dataList = require('../../restaurant.json').results
 
 //schema
@@ -6,8 +7,7 @@ const Restaurant = require('../restaurant.js')
 
 //database connect
 require('dotenv').config()
-const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect(process.env.MONGODB_URI)
 const db = mongoose.connection
 
 db.on('error', () => {
@@ -19,7 +19,6 @@ db.once('open', () => {
   dataList.forEach( data => {
     Restaurant.create(
       {
-        id: data.id,
         name: data.name,
         name_en: data.name_en,
         category: data.category,
@@ -32,7 +31,8 @@ db.once('open', () => {
       }
     )
   })
-  return console.log('done!')
+
+  console.log('done!')
 })
 
 
