@@ -1,18 +1,10 @@
 //data
 const mongoose = require('mongoose')
+const db = require('../../config/mongoose')
 const dataList = require('../../restaurant.json').results
-
 //schema
 const Restaurant = require('../restaurant.js')
 
-//database connect
-require('dotenv').config()
-mongoose.connect(process.env.MONGODB_URI)
-const db = mongoose.connection
-
-db.on('error', () => {
-  return console.log('error')
-})
 
 db.once('open', () => {
   console.log('ok')
