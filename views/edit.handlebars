@@ -1,106 +1,111 @@
 
-<div class="container mt-5">
-  <form action="/restaurants/{{ restaurant._id }}/edit?_method=PATCH" method="POST">
-    name<input type="text" name="name" value="{{restaurant.name}}"><br>
-    name_en<input type="text" name="name_en" value="{{restaurant.name_en}}"><br>
-    category<input type="text" name="category" value="{{restaurant.category}}"><br>
-    image<input type="text" name="image" value="{{restaurant.image}}"><br>
-    location<input type="text" name="location" value="{{restaurant.location}}"><br>
-    phone<input type="text" name="phone" value="{{restaurant.phone}}"><br>
-    google_map<input type="text" name="google_map" value="{{restaurant.google_map}}"><br>
-    rating<input type="text" name="rating" value="{{restaurant.rating}}"><br>
-    description<textarea name="description" cols="30" rows="10" >{{restaurant.description}}</textarea>
-    <button type="submit">Save</button>
-  </form>
-</div>
 
-
-
-
-{{!-- <div class="container mt-5 mb-5">
-  <form class="row g-3 needs-validation" novalidate>
-    <span class="h3">修改餐廳資訊</span>
-    <div class="col-12">
-      <label for="validationCustom01" class="form-label">name</label>
-      <input type="text" class="form-control" id="validationCustom01" value="{{restaurant.name}}" required>
+<div class="container mt-5 mb-5">
+  <span class="h3">修改餐廳</span>
+  <form class="row g-3 needs-validation" action="/restaurants/{{ restaurant._id }}/edit?_method=PATCH" method="POST" novalidate>
+    <div class="col-md-6">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" value="{{restaurant.name}}" required>
       <div class="valid-feedback">
         Looks good!
       </div>
-    </div>
-    <div class="col-12">
-      <label for="validationCustom02" class="form-label">name_en</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="validationCustomUsername" class="form-label">Username</label>
-      <div class="input-group has-validation">
-        <span class="input-group-text" id="inputGroupPrepend">@</span>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-          required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="validationCustom03" class="form-label">category</label>
-      <input type="text" class="form-control" id="validationCustom03" required>
       <div class="invalid-feedback">
-        Please provide a valid category.
+        Name is required.
       </div>
     </div>
-    <div class="col-md-4">
-      <label for="validationCustom04" class="form-label">image</label>
-      <select class="form-select" id="validationCustom04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
+
+    <div class="col-md-6">
+      <label for="name_en" class="form-label">English name</label>
+      <input type="text" class="form-control" id="name_en" name="name_en" value="{{restaurant.name_en}}" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        English name is required.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="address" class="form-label">Address</label>
+      <input type="text" class="form-control" id="address" name="address"  value="{{restaurant.address}}" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Address is required.
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="phone" class="form-label">Phone</label>
+      <input type="text" class="form-control" id="phone" name="phone" value="{{restaurant.phone}}" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Phone is required.
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+      <label for="google_map" class="form-label">Location link on google map</label>
+      <input type="text" class="form-control" id="google_map" name="google_map" value="{{restaurant.google_map}}" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Link is required.
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="rating" class="form-label">Rating</label>
+      <input type="text" class="form-control" id="rating" name="rating" value="{{restaurant.rating}}" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Rate is required.
+      </div>
+    </div>
+
+    <div class="col-6">
+      <label for="category" class="form-label">Category</label>
+      <select class="form-select" id="validationCustom04" name="category" required>
+        <option>中東料理</option>
+        <option>日本料理</option>
+        <option>義式餐廳</option>
+        <option>美式</option>
+        <option>酒吧</option>
+        <option>咖啡</option>
       </select>
+      <div class="invalid-feedback"> 
+        Category is required.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="image" class="form-label">Image</label>
+      <input type="text" class="form-control" id="image" name="image" value="{{restaurant.image}}" disabled>
+      <input type="text" class="form-control" id="image" name="image" value="{{restaurant.image}}" hidden>
+    </div>
+
+    <div class="col-12">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" placeholder="Leave a description here" id="Description" style="height: 200px"
+        name="description" required>{{restaurant.description}}</textarea>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
       <div class="invalid-feedback">
-        Please select a valid state.
+        Description is required.
       </div>
     </div>
-    <div class="col-md-4">
-      <label for="validationCustom05" class="form-label">location</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
-    </div>
-    <div class="col-12">
-      <label for="validationCustom01" class="form-label">phone</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-12">
-      <label for="validationCustom01" class="form-label">google_map_link</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-12">
-      <label for="validationCustom01" class="form-label">rating</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-12">
-      <label for="validationCustom01" class="form-label">description</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
+
     <div class="col-12 text-end">
-      <a href="#" class="btn btn-danger">delete</a>
       <button class="btn btn-primary" type="submit">Save</button>
     </div>
   </form>
 
-</div> --}}
+</div>

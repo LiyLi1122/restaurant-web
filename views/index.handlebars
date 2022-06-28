@@ -45,15 +45,16 @@
           <div class="text-end">
             <a href="/restaurants/{{this._id}}" class="card-link">detail</a>
             <a href="/restaurants/{{this._id}}/edit" class="card-link">edit</a>
-            <form action="/restaurants/{{this._id}}/delete?_method=DELETE" method="POST" style="display: inline">
-              <button type="submit" class="btn btn-danger">delete</button>
+            {{!-- <button class="btn delete-btn" >delete</button> --}}
+            <form action="/restaurants/{{this._id}}/delete?_method=DELETE" method="POST" style="display: inline" id="form-delete">
+              <button type="submit" class="btn btn-danger delete-btn">delete</button>
             </form>
           </div>
         </a>
       </div>
     </div>
     {{/each}}
-    
+
   </div>
 </div>
 {{!-- {{else}} --}}
