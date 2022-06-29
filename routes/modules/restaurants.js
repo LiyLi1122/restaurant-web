@@ -2,6 +2,7 @@ const express = require('express')
 const { db } = require('../../models/restaurant')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
+const multer = require('multer')
 
 //get create page
 router.get('/create', (request, response) => {
@@ -11,14 +12,20 @@ router.get('/create', (request, response) => {
 //search specified data
 router.get('/search', (request, response) => {
   const keyword = request.query.keyword
-  Restaurant.find({ name: { $in: ['AirPod'] }})
-            .lean()
-            .then(result => {
-              console.log(result)
-            })
-            .catch(error => console.log(error))
+  const reg = new RegExp(keyword.trim(), 'i')
+  const _filter = {
+    $or: [
+      {name: {$regex: reg}},
+      {category: {$regex: reg}}
+    ]
+  }
+  Restaurant.find(_filter)
+    .lean()
+    .then(restaurantList => response.render('index', { restaurantList, keyword })) //object
+    .catch(error => console.log(error))
 })
 
+//specified data detail info
 router.get('/:id', (request, response) => {
   const id = request.params.id
   Restaurant.findById(id)
@@ -30,15 +37,20 @@ router.get('/:id', (request, response) => {
 })
 
 
+
 //create new data
-router.post('/create', (request, response) => {
-  const image = 'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg'
+router.post('/create', upload.single('image'), (request, response) => {
+
+  // const image = 'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg'
+
+
   const { name, name_en, category, address, phone, google_map, rating, description } = request.body
+
   Restaurant.create({ name, name_en, category, image, address, phone, google_map, rating, description })
     .then(() => response.redirect('/'))
     .catch(error => console.log(error))
-})
 
+  })
 
 //get modify page 
 router.get('/:id/edit', (request, response) => {
@@ -72,14 +84,13 @@ router.patch('/:id/edit', (request, response) => {
     .catch(error => console.log(error))
 })
 
-//delete specified data 
+// delete specified data 
 router.delete('/:id/delete', (request, response) => {
   const id = request.params.id
   Restaurant.findById(id)
     .then(restaurant => { return restaurant.remove() })
     .then(() => response.redirect('/'))
     .catch(error => console.log(error))
-
 })
 
 
