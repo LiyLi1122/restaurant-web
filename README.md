@@ -4,7 +4,7 @@ You can add some special restaurants on this site.
 1. Create some details for your restaurant like rate, name, google map's link ... etc.
 2. Browse restaurant's detailed info (e.g. location, description...)
 3. Modify them if you want.
-4. Remove unwanted one.
+4. Remove unwanted.
 5. Search specified restaurants by name or category.
 
 ## How to use
