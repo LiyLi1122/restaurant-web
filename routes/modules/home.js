@@ -3,11 +3,12 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 //get all data
-router.get('/', (request, response) => {
+router.get('/', (req, res) => {
   Restaurant.find()
     .lean()
     .then(restaurantList => {
-      response.render('index', { restaurantList })
+      // console.log(restaurantList)
+      res.render('index', { restaurantList })
     })
     .catch(error => console.log(error))
 })

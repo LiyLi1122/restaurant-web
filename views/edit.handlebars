@@ -1,8 +1,8 @@
-
+{{!-- edit restaurant --}}
 
 <div class="container mt-5 mb-5">
   <span class="h3">修改餐廳</span>
-  <form class="row g-3 needs-validation" action="/restaurants/{{ restaurant._id }}/edit?_method=PATCH" method="POST" novalidate>
+  <form class="row g-3 needs-validation" action="/restaurants/{{ restaurant._id }}/edit?_method=PATCH" method="POST" enctype='multipart/form-data' id="edit-form" novalidate>
     <div class="col-md-6">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control" id="name" name="name" value="{{restaurant.name}}" required>
@@ -85,11 +85,6 @@
       </div>
     </div>
 
-    <div class="col-12">
-      <label for="image" class="form-label">Image</label>
-      <input type="text" class="form-control" id="image" name="image" value="{{restaurant.image}}" disabled>
-      <input type="text" class="form-control" id="image" name="image" value="{{restaurant.image}}" hidden>
-    </div>
 
     <div class="col-12">
       <label for="description" class="form-label">Description</label>
@@ -103,9 +98,18 @@
       </div>
     </div>
 
-    <div class="col-12 text-end">
-      <button class="btn btn-primary" type="submit">Save</button>
+    <div class="col-12">
+      <label for="image" class="form-label">Image</label>
+      <span>( 上傳檔案不超過 10 MB )</span>
+      <img src="{{restaurant.image}}" alt="restaurant image" class="edit-img">
+      <input type="text" class="form-control" id="image" name="original_img" value="{{restaurant.image}}" hidden>
+      <input type="file" class="form-control" id="image" name="image">
     </div>
+
+    <div class="col-12 text-end">
+      <a href="/" class="btn btn-secondary" id="cancel-btn">Cancel</a>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div> 
   </form>
 
 </div>

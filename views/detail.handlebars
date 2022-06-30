@@ -1,4 +1,4 @@
-
+{{!-- detail restaurant --}}
 
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
 <div class="container mb-5">
@@ -41,17 +41,12 @@
         style="max-width: 600px;">
     </div>
   </div>
+  
   <div class="text-end">
     <a href="/restaurants/{{restaurant._id}}/edit" class="card-link">edit</a>
     <form action="/restaurants/{{restaurant._id}}/delete?_method=DELETE" method="POST" style="display: inline">
-      <button type="submit" class="btn btn-danger btn-delete">delete</button>
+      <button type="submit" class="btn btn-danger delete-btn">delete</button>
     </form>
   </div>
 </div> 
 
-  <script>
-    const button = document.querySelector('btn-delete')
-    button.addEventListener('click', () => {
-      alert('y')
-    })
-  </script>

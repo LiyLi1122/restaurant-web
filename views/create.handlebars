@@ -1,7 +1,7 @@
-
+{{!-- create restaurant --}}
 <div class="container mt-5 mb-5">
   <span class="h3">新增餐廳</span>
-  <form class="row g-3 needs-validation" action="/restaurants/create" method="POST"   novalidate>
+  <form class="row g-3 needs-validation" action="/restaurants/create" method="POST" novalidate enctype='multipart/form-data'>
     <div class="col-md-6">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control" id="name" name="name" required>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-  
+
     <div class="col-12">
       <label for="address" class="form-label">Address</label>
       <input type="text" class="form-control" id="address" name="address" required>
@@ -88,13 +88,22 @@
 
     <div class="col-md-12">
       <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" placeholder="Leave a description here" id="Description"
-        style="height: 200px" name="description" required></textarea>
+      <textarea class="form-control" placeholder="Leave a description here" id="Description" style="height: 200px"
+        name="description" required></textarea>
       <div class="valid-feedback">
         Looks good!
       </div>
       <div class="invalid-feedback">
         Description is required.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="image" class="form-label">Image</label>
+      <span>( 上傳檔案不超過 10 MB )</span>
+      <input type="file" class="form-control" id="image" name="image" required>
+      <div class="invalid-feedback">
+        Image is required.
       </div>
     </div>
 
@@ -104,15 +113,3 @@
   </form>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,3 +1,5 @@
+{{!-- restaurant list --}}
+
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
@@ -7,7 +9,6 @@
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
             value="{{ keyword }}" aria-describedby="search-button" id="search-input">
-          <!--若 keyword 無資料則為'' -> ? 待確認-->
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
@@ -44,8 +45,8 @@
           <div class="text-end">
             <a href="/restaurants/{{this._id}}" class="card-link">detail</a>
             <a href="/restaurants/{{this._id}}/edit" class="card-link">edit</a>
-            {{!-- <button class="btn delete-btn" >delete</button> --}}
-            <form action="/restaurants/{{this._id}}/delete?_method=DELETE" method="POST" style="display: inline" id="delete-form">
+            <form action="/restaurants/{{this._id}}/delete?_method=DELETE" method="POST" style="display: inline"
+              id="delete-form">
               <button type="submit" class="btn btn-danger delete-btn">delete</button>
             </form>
           </div>
@@ -56,6 +57,6 @@
 
   </div>
 </div>
-{{else}} 
-<h5 class="text-center mt-5">搜尋結果：無相關關鍵字餐廳</h5>
+{{else}}
+  <h5 class="text-center mt-5">搜尋結果：無相關關鍵字餐廳</h5>
 {{/if}}
