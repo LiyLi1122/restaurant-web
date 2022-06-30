@@ -16,9 +16,11 @@ step 3 : cd restaurant-web
 
 step 4 : input your ClientID and MongoDB password on .env.example.
 
-step 5 : nodemon app.js
+step 5 : **npm run dev** to run this project
 
-step 6 : open browser input 127.0.0.1:3000
+step 6 : **npm run seed** to add some prepared data on MongoDB
+
+step 7 : open browser input 127.0.0.1:3000
 
 
 
