@@ -14,7 +14,7 @@ step 2 : get ClientID on https://api.imgur.com/oauth2/addclient
 
 step 3 : cd restaurant-web
 
-step 4 : input your ClientID on .env.example.
+step 4 : input your ClientID and MongoDB password on .env.example.
 
 step 5 : nodemon app.js
 
