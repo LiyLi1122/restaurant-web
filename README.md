@@ -6,6 +6,7 @@ You can add some special restaurants on this site.
 3. Modify them if you want.
 4. Remove unwanted.
 5. Search specified restaurants by name or category.
+6. Sort restaurant by name, address, catagory. 
 
 ## How to use
 step 1 : git clone https://github.com/LiyLi1122/restaurant-web.git
