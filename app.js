@@ -7,7 +7,6 @@ const routes = require('./routes')
 require('./config/mongoose')
 const port = process.env.PORT
 
-
 //set handlebars
 const app = express()
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -18,7 +17,6 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
 app.use(routes)
-
 
 //server listen port
 app.listen(port, () => {

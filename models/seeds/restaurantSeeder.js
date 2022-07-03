@@ -5,15 +5,26 @@ const dataList = require('../../restaurant.json').results
 //schema
 const Restaurant = require('../restaurant.js')
 
+function changeCategory(category) {
+  switch (category) {
+    case '中東料理': return 0
+    case '日本料理': return 1
+    case '義式餐廳': return 2
+    case '美式': return 3
+    case '酒吧': return 4
+    case '咖啡': return 5
+  }
+}
+
 
 db.once('open', () => {
-  console.log('ok')
   dataList.forEach( data => {
     Restaurant.create(
       {
         name: data.name,
         name_en: data.name_en,
         category: data.category,
+        category_id: changeCategory(data.category),
         image: data.image,
         address: data.location,
         phone: data.phone,
